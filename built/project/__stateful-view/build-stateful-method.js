@@ -1,0 +1,1 @@
+define(["require","exports","module","lodash","q"],function(e,t,n){var r=e("lodash"),i=e("q");n.exports=function(t,n){var s=t+":doing",o=t+":done";return function(){var u=this.getState();if(u===o||u===s)return this.cache(t);this.setState(s);var a=n.apply(this,arguments);return this.cache(t,a),i.isPromise(a)?a.done(r.partial(this.setState,o)):this.setState(o),a}}});

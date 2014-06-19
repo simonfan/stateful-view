@@ -1,0 +1,201 @@
+{
+    "project": {
+        "name": "stateful-view",
+        "version": "0.0.0"
+    },
+    "files": {
+        "src/__stateful-view/build-stateful-method.js": {
+            "name": "src/__stateful-view/build-stateful-method.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/index.js": {
+            "name": "src/index.js",
+            "modules": {
+                "StatefulView": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "StatefulView": {
+            "name": "StatefulView",
+            "submodules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/index.js",
+            "line": 5,
+            "description": "AMD module."
+        }
+    },
+    "classes": {},
+    "classitems": [
+        {
+            "file": "src/__stateful-view/build-stateful-method.js",
+            "line": 7,
+            "description": "Builds the method",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "[description]",
+                    "type": "[type]"
+                },
+                {
+                    "name": "stateFns",
+                    "description": "[description]",
+                    "type": "[type]"
+                }
+            ],
+            "return": {
+                "description": "[description]",
+                "type": "[type]"
+            },
+            "class": ""
+        },
+        {
+            "file": "src/index.js",
+            "line": 27,
+            "description": "Whatever is needed for stateful object to start working.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "[description]",
+                    "type": "[type]"
+                }
+            ],
+            "return": {
+                "description": "[description]",
+                "type": "[type]"
+            },
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 37,
+            "description": "Property that holds the state of the object.",
+            "type": "{[type]}",
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 43,
+            "description": "Cache onto which state invocations will be set to.",
+            "type": "{Object}",
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 52,
+            "description": "Returns the object's current state.\nMay be overridden for custom behaviour.",
+            "return": {
+                "description": "[description]",
+                "type": "[type]"
+            },
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 62,
+            "description": "Sets the object's state property to whatever is passed\nas first argument.",
+            "params": [
+                {
+                    "name": "state",
+                    "description": "[description]",
+                    "type": "[type]"
+                }
+            ],
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 73,
+            "description": "Sets and retrieves values from and to the cache.",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "[description]",
+                    "type": "[type]"
+                },
+                {
+                    "name": "value",
+                    "description": "[description]",
+                    "type": "[type]"
+                }
+            ],
+            "return": {
+                "description": "[description]",
+                "type": "[type]"
+            },
+            "class": "",
+            "module": "StatefulView"
+        },
+        {
+            "file": "src/index.js",
+            "line": 96,
+            "description": "Defines a stateful method onto the object's prototype.",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "[description]",
+                    "type": "[type]"
+                },
+                {
+                    "name": "fn",
+                    "description": "[description]",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "[description]",
+                "type": "[type]"
+            },
+            "class": "",
+            "module": "StatefulView"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nBuilds the method",
+            "line": " src/__stateful-view/build-stateful-method.js:7"
+        },
+        {
+            "message": "Missing item type\nWhatever is needed for stateful object to start working.",
+            "line": " src/index.js:27"
+        },
+        {
+            "message": "Missing item type\nProperty that holds the state of the object.",
+            "line": " src/index.js:37"
+        },
+        {
+            "message": "Missing item type\nCache onto which state invocations will be set to.",
+            "line": " src/index.js:43"
+        },
+        {
+            "message": "Missing item type\nReturns the object's current state.\nMay be overridden for custom behaviour.",
+            "line": " src/index.js:52"
+        },
+        {
+            "message": "Missing item type\nSets the object's state property to whatever is passed\nas first argument.",
+            "line": " src/index.js:62"
+        },
+        {
+            "message": "Missing item type\nSets and retrieves values from and to the cache.",
+            "line": " src/index.js:73"
+        },
+        {
+            "message": "Missing item type\nDefines a stateful method onto the object's prototype.",
+            "line": " src/index.js:96"
+        }
+    ]
+}
