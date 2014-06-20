@@ -7160,7 +7160,7 @@
 //     (c) simonfan
 //     subject is licensed under the MIT terms.
 
-define("__subject/private/assign",["require","exports","module","lodash"],function(e,t,r){function s(e,t,r){if(n.defaults(r,o),!n.isArray(t))throw new Error("Currently subject.assign does not accept non-array properties for accessor assignment.");n.each(t,function(t){var s=n.extend({},r);s.get&&(s.get=n.partial(s.get,t)),s.set&&(s.set=n.partial(s.set,t)),Object.defineProperty(e,t,s)})}function i(e,t,r){n.defaults(r,a),n.each(t,function(t,s){var i=n.assign({value:t},r);Object.defineProperty(e,s,i)})}var n=e("lodash"),o={configurable:!0,enumerable:!0},a=n.extend({writable:!0},o);r.exports=function(e,t,r){return r?r.get||r.set?s(e,t,r):i(e,t,r):n.assign(e,t),e}}),define("__subject/public/assign-proto",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(){var e,t;return s.isObject(arguments[0])?(e=arguments[0],t=arguments[1]):s.isString(arguments[0])&&(e={},e[arguments[0]]=arguments[1],t=arguments[2]),i(this.prototype,e,t),this}}),define("__subject/public/proto-merge",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(){var e,t,r;if(s.isString(arguments[0])){var n=arguments[0];e=this.prototype[n],t=arguments[1],r=arguments[2],this.prototype[n]=i(s.create(e),t,r)}else r=arguments[1],s.each(arguments[0],s.bind(function(e,t){this.protoMerge(t,e,r)},this));return this}}),define("__subject/public/extend",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(e,t){var r,n=this;return r=function(){var e=s.create(r.prototype);return e.initialize.apply(e,arguments),e},i(r,s.pick(n,n.staticProperties),{enumerable:!1}),r.prototype=s.create(n.prototype),r.assignProto(e,t),i(r.prototype,{constructor:r,__super__:n.prototype},{enumerable:!1}),r}}),define("subject",["require","exports","module","lodash","./__subject/private/assign","./__subject/public/assign-proto","./__subject/public/assign-proto","./__subject/public/proto-merge","./__subject/public/extend"],function(e,t,r){var s=e("lodash"),i=e("./__subject/private/assign"),n=function(){};n.prototype=i({},{initialize:function(){}},{enumerable:!1}),i(n,{staticProperties:["proto","assignProto","protoMerge","staticProperties","assignStatic","extend"],assignStatic:function(e,t){return this.staticProperties=s.union(this.staticProperties,s.keys(e)),i(this,e,t)},assignProto:e("./__subject/public/assign-proto"),proto:e("./__subject/public/assign-proto"),protoMerge:e("./__subject/public/proto-merge"),extend:e("./__subject/public/extend")},{enumerable:!1}),r.exports=s.bind(n.extend,n);var o={assign:i};i(r.exports,o,{enumerable:!1,writable:!1,configurable:!1})});
+define("__subject/private/assign",["require","exports","module","lodash"],function(e,t,r){function s(e,t,r){if(n.defaults(r,a),!n.isArray(t))throw new Error("Currently subject.assign does not accept non-array properties for accessor assignment.");n.each(t,function(t){var s=n.extend({},r);s.get&&(s.get=n.partial(s.get,t)),s.set&&(s.set=n.partial(s.set,t)),Object.defineProperty(e,t,s)})}function i(e,t,r){n.defaults(r,o),n.each(t,function(t,s){var i=n.assign({value:t},r);Object.defineProperty(e,s,i)})}var n=e("lodash"),a={configurable:!0,enumerable:!0},o=n.extend({writable:!0},a);r.exports=function(e,t,r){return r?r.get||r.set?s(e,t,r):i(e,t,r):n.assign(e,t),e}}),define("__subject/public/assign-proto",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(){var e,t;return s.isObject(arguments[0])?(e=arguments[0],t=arguments[1]):s.isString(arguments[0])&&(e={},e[arguments[0]]=arguments[1],t=arguments[2]),i(this.prototype,e,t),this}}),define("__subject/public/proto-merge",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(){var e,t,r;if(s.isString(arguments[0])){var n=arguments[0];e=this.prototype[n],t=arguments[1],r=arguments[2],this.prototype[n]=i(s.create(e),t,r)}else r=arguments[1],s.each(arguments[0],s.bind(function(e,t){this.protoMerge(t,e,r)},this));return this}}),define("__subject/public/extend",["require","exports","module","lodash","../private/assign"],function(e,t,r){var s=e("lodash"),i=e("../private/assign");r.exports=function(e,t){var r,n=this;return r=function(){var e=s.create(r.prototype);return e.initialize.apply(e,arguments),e},i(r,s.pick(n,n.staticProperties),{enumerable:!1}),r.prototype=s.create(n.prototype),r.assignProto(e,t),i(r.prototype,{constructor:r,__super__:n.prototype},{enumerable:!1}),r}}),define("subject",["require","exports","module","lodash","./__subject/private/assign","./__subject/public/assign-proto","./__subject/public/assign-proto","./__subject/public/proto-merge","./__subject/public/extend"],function(e,t,r){var s=e("lodash"),i=e("./__subject/private/assign"),n=function(){};n.prototype=i({},{initialize:function(){}},{enumerable:!1}),i(n,{staticProperties:["proto","assignProto","protoMerge","staticProperties","assignStatic","extend"],assignStatic:function(){var e,t,r;return s.isString(arguments[0])?(e={},e[arguments[0]]=arguments[1],t=[arguments[0]],r=arguments[2]):s.isObject(arguments[0])&&(e=arguments[0],t=s.keys(e),r=arguments[1]),this.staticProperties=s.union(this.staticProperties,t),i(this,e,r)},assignProto:e("./__subject/public/assign-proto"),proto:e("./__subject/public/assign-proto"),protoMerge:e("./__subject/public/proto-merge"),extend:e("./__subject/public/extend")},{enumerable:!1}),r.exports=s.bind(n.extend,n);var a={assign:i};i(r.exports,a,{enumerable:!1,writable:!1,configurable:!1})});
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -21277,14 +21277,14 @@ define('__stateful-view/build-stateful-method',['require','exports','module','lo
 
 });
 
-//     StatefulView
+//     stateful-view
 //     (c) simonfan
-//     StatefulView is licensed under the MIT terms.
+//     stateful-view is licensed under the MIT terms.
 
 /**
  * AMD module.
  *
- * @module StatefulView
+ * @module stateful-view
  */
 
 define('stateful-view',['require','exports','module','lowercase-backbone','lodash','./__stateful-view/build-stateful-method'],function (require, exports, module) {
@@ -21317,7 +21317,7 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 			 * Property that holds the state of the object.
 			 * @type {[type]}
 			 */
-			this.state = options.state || this.state;
+		//	this.state = options.state || this.state;
 
 			/**
 			 * Cache onto which state invocations will be set to.
@@ -21345,7 +21345,16 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 		 * @param {[type]} state [description]
 		 */
 		setState: function setState(state) {
-			this.state = state;
+			if (this.state !== state) {
+				this.state = state;
+
+				// state change
+				this.trigger('state', this, state)
+					.trigger(state, this);
+			} else {
+				// do nothing.
+			}
+
 			return this;
 		},
 
@@ -21379,28 +21388,30 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 	 * @param  {Function} fn   [description]
 	 * @return {[type]}        [description]
 	 */
-	statefulView.assignStatic({
-		statefulMethod: function statefulMethod(name, fn) {
+	statefulView.assignStatic('statefulMethod', function statefulMethod(name, fn) {
 
-			if (_.isString(name)) {
-				// is a string, define a single action
+		if (_.isString(name)) {
+			// is a string, define a single action
 
-				// build the function
-				var statefulMethod = buildStatefulMethod(name, fn);
+			// build the function
+			var statefulMethod = buildStatefulMethod(name, fn);
 
-				// assign the fn to the prototype.
-				this.assignProto(name, statefulMethod);
+			// assign the fn to the prototype.
+			this.assignProto(name, statefulMethod);
 
-			} else {
-				// multiple statefulMethods
-				_.each(name, function (fn, name) {
-					this.statefulMethod(name, fn);
-				}, this);
-			}
-
-			// always return 'this'
-			return this;
+		} else {
+			// multiple statefulMethods
+			_.each(name, function (fn, name) {
+				this.statefulMethod(name, fn);
+			}, this);
 		}
-	});
+
+		// always return 'this'
+		return this;
+
+	}, { enumerable: false }); // non enumerable.
+
+	// alias
+	statefulView.assignStatic('statefulMethods', statefulView.statefulMethod);
 });
 

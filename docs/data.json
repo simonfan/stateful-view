@@ -14,7 +14,7 @@
         "src/index.js": {
             "name": "src/index.js",
             "modules": {
-                "StatefulView": 1
+                "stateful-view": 1
             },
             "classes": {},
             "fors": {},
@@ -22,8 +22,8 @@
         }
     },
     "modules": {
-        "StatefulView": {
-            "name": "StatefulView",
+        "stateful-view": {
+            "name": "stateful-view",
             "submodules": {},
             "classes": {},
             "fors": {},
@@ -74,7 +74,7 @@
                 "type": "[type]"
             },
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
@@ -82,7 +82,7 @@
             "description": "Property that holds the state of the object.",
             "type": "{[type]}",
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
@@ -90,7 +90,7 @@
             "description": "Cache onto which state invocations will be set to.",
             "type": "{Object}",
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
@@ -101,7 +101,7 @@
                 "type": "[type]"
             },
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
@@ -115,11 +115,11 @@
                 }
             ],
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
-            "line": 73,
+            "line": 82,
             "description": "Sets and retrieves values from and to the cache.",
             "params": [
                 {
@@ -138,11 +138,11 @@
                 "type": "[type]"
             },
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         },
         {
             "file": "src/index.js",
-            "line": 96,
+            "line": 105,
             "description": "Defines a stateful method onto the object's prototype.",
             "params": [
                 {
@@ -161,7 +161,7 @@
                 "type": "[type]"
             },
             "class": "",
-            "module": "StatefulView"
+            "module": "stateful-view"
         }
     ],
     "warnings": [
@@ -191,11 +191,11 @@
         },
         {
             "message": "Missing item type\nSets and retrieves values from and to the cache.",
-            "line": " src/index.js:73"
+            "line": " src/index.js:82"
         },
         {
             "message": "Missing item type\nDefines a stateful method onto the object's prototype.",
-            "line": " src/index.js:96"
+            "line": " src/index.js:105"
         }
     ]
 }

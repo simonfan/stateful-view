@@ -2,12 +2,12 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [],
     "modules": [
-        "StatefulView"
+        "stateful-view"
     ],
     "allModules": [
         {
-            "displayName": "StatefulView",
-            "name": "StatefulView",
+            "displayName": "stateful-view",
+            "name": "stateful-view",
             "description": "AMD module."
         }
     ]

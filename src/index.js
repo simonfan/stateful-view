@@ -1,11 +1,11 @@
-//     StatefulView
+//     stateful-view
 //     (c) simonfan
-//     StatefulView is licensed under the MIT terms.
+//     stateful-view is licensed under the MIT terms.
 
 /**
  * AMD module.
  *
- * @module StatefulView
+ * @module stateful-view
  */
 
 define(function (require, exports, module) {
@@ -35,12 +35,6 @@ define(function (require, exports, module) {
 			options = options || {};
 
 			/**
-			 * Property that holds the state of the object.
-			 * @type {[type]}
-			 */
-			this.state = options.state || this.state;
-
-			/**
 			 * Cache onto which state invocations will be set to.
 			 * @type {Object}
 			 */
@@ -66,7 +60,16 @@ define(function (require, exports, module) {
 		 * @param {[type]} state [description]
 		 */
 		setState: function setState(state) {
-			this.state = state;
+			if (this.state !== state) {
+				this.state = state;
+
+				// state change
+				this.trigger('state', this, state)
+					.trigger(state, this);
+			} else {
+				// do nothing.
+			}
+
 			return this;
 		},
 
@@ -100,27 +103,29 @@ define(function (require, exports, module) {
 	 * @param  {Function} fn   [description]
 	 * @return {[type]}        [description]
 	 */
-	statefulView.assignStatic({
-		statefulMethod: function statefulMethod(name, fn) {
+	statefulView.assignStatic('statefulMethod', function statefulMethod(name, fn) {
 
-			if (_.isString(name)) {
-				// is a string, define a single action
+		if (_.isString(name)) {
+			// is a string, define a single action
 
-				// build the function
-				var statefulMethod = buildStatefulMethod(name, fn);
+			// build the function
+			var statefulMethod = buildStatefulMethod(name, fn);
 
-				// assign the fn to the prototype.
-				this.assignProto(name, statefulMethod);
+			// assign the fn to the prototype.
+			this.assignProto(name, statefulMethod);
 
-			} else {
-				// multiple statefulMethods
-				_.each(name, function (fn, name) {
-					this.statefulMethod(name, fn);
-				}, this);
-			}
-
-			// always return 'this'
-			return this;
+		} else {
+			// multiple statefulMethods
+			_.each(name, function (fn, name) {
+				this.statefulMethod(name, fn);
+			}, this);
 		}
-	});
+
+		// always return 'this'
+		return this;
+
+	}, { enumerable: false }); // non enumerable.
+
+	// alias
+	statefulView.assignStatic('statefulMethods', statefulView.statefulMethod);
 });
