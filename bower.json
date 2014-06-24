@@ -1,7 +1,7 @@
 {
   "name": "stateful-view",
   "main": "built/stateful-view.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Backbone view that supports states.",
   "dependencies": {
     "lowercase-backbone": "0.2.6",

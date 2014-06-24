@@ -21314,12 +21314,6 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 			options = options || {};
 
 			/**
-			 * Property that holds the state of the object.
-			 * @type {[type]}
-			 */
-		//	this.state = options.state || this.state;
-
-			/**
 			 * Cache onto which state invocations will be set to.
 			 * @type {Object}
 			 */
@@ -21381,6 +21375,9 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 
 	});
 
+
+	var nonEnum = { enumerable: false };
+
 	/**
 	 * Defines a stateful method onto the object's prototype.
 	 *
@@ -21409,9 +21406,30 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 		// always return 'this'
 		return this;
 
-	}, { enumerable: false }); // non enumerable.
-
+	}, nonEnum); // non enumerable.
 	// alias
-	statefulView.assignStatic('statefulMethods', statefulView.statefulMethod);
+	statefulView.assignStatic('statefulMethods', statefulView.statefulMethod, nonEnum);
+
+
+	/**
+	 * Basically extends the statefulView
+	 * and defines statefulMethods onto the new view.
+	 *
+	 * @param  {[type]} methods [description]
+	 * @return {[type]}         [description]
+	 */
+	statefulView.assignStatic('extendStatefulMethods', function extendStatefulMethods(methods) {
+
+		// [1] extend
+		var extended = this.extend();
+
+		// [2] define statefulMethods
+		extended.statefulMethods(methods);
+
+		// [3] return the extended object.
+		return extended;
+
+	}, nonEnum);
+
 });
 

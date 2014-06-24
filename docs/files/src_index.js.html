@@ -123,12 +123,6 @@ define(function (require, exports, module) {
 			options = options || {};
 
 			/**
-			 * Property that holds the state of the object.
-			 * @type {[type]}
-			 */
-		//	this.state = options.state || this.state;
-
-			/**
 			 * Cache onto which state invocations will be set to.
 			 * @type {Object}
 			 */
@@ -190,6 +184,9 @@ define(function (require, exports, module) {
 
 	});
 
+
+	var nonEnum = { enumerable: false };
+
 	/**
 	 * Defines a stateful method onto the object&#x27;s prototype.
 	 *
@@ -218,10 +215,31 @@ define(function (require, exports, module) {
 		// always return &#x27;this&#x27;
 		return this;
 
-	}, { enumerable: false }); // non enumerable.
-
+	}, nonEnum); // non enumerable.
 	// alias
-	statefulView.assignStatic(&#x27;statefulMethods&#x27;, statefulView.statefulMethod);
+	statefulView.assignStatic(&#x27;statefulMethods&#x27;, statefulView.statefulMethod, nonEnum);
+
+
+	/**
+	 * Basically extends the statefulView
+	 * and defines statefulMethods onto the new view.
+	 *
+	 * @param  {[type]} methods [description]
+	 * @return {[type]}         [description]
+	 */
+	statefulView.assignStatic(&#x27;extendStatefulMethods&#x27;, function extendStatefulMethods(methods) {
+
+		// [1] extend
+		var extended = this.extend();
+
+		// [2] define statefulMethods
+		extended.statefulMethods(methods);
+
+		// [3] return the extended object.
+		return extended;
+
+	}, nonEnum);
+
 });
 
     </pre>
