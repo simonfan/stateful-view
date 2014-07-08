@@ -106,7 +106,7 @@ module.exports = function (grunt) {
 
 					// exclude these modules AND their dependencies
 					// (excluding your bower dependencies)
-					exclude: ['lodash', 'jquery', 'lowercase-backbone', 'q'],
+					exclude: ['lodash', 'jquery', 'lowercase-backbone', 'q', 'improved-model'],
 
 					// excludeShallow
 					excludeShallow: [],
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
 
 					// exclude these modules AND their dependencies
 					// (excluding your bower dependencies)
-					exclude: ['lodash', 'jquery', 'lowercase-backbone', 'q'],
+					exclude: ['lodash', 'jquery', 'lowercase-backbone', 'q', 'improved-model'],
 
 					// excludeShallow
 					excludeShallow: [],
@@ -149,19 +149,6 @@ module.exports = function (grunt) {
 					},
 				}
 			},
-
-			project: {
-				options: {
-					// source files
-					appDir: 'src/',
-					// output here:
-					dir: 'built/project/',
-					mainConfigFile: 'amdconfig.js',
-
-					// do not copy these files
-					fileExclusionRegExp: /^\./,
-				}
-			}
 		}
 	});
 

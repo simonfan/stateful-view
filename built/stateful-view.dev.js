@@ -68,11 +68,13 @@ define('__stateful-view/build-stateful-method',['require','exports','module','lo
  * @module stateful-view
  */
 
-define('stateful-view',['require','exports','module','lowercase-backbone','lodash','./__stateful-view/build-stateful-method'],function (require, exports, module) {
+define('stateful-view',['require','exports','module','lowercase-backbone','lodash','improved-model','./__stateful-view/build-stateful-method'],function (require, exports, module) {
 	
 
 	var backbone = require('lowercase-backbone'),
-		_        = require('lodash');
+		_        = require('lodash'),
+		model    = require('improved-model');
+
 
 	var buildStatefulMethod = require('./__stateful-view/build-stateful-method');
 
@@ -101,7 +103,38 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 			this._cache = {};
 
 			_.bindAll(this, ['setState', 'getState']);
+
+
+			/**
+			 * Model that controls the statefulView
+			 */
+			this.control = options.control || model();
+
+			// set execution cases
+			var cases = options.cases || this.cases;
+			if (_.isArray(cases)) {
+				// [{ condition: , method: , context: }]
+				_.each(cases, function (c) {
+
+					this.when(c.condition, c.method, c.context);
+
+				}, this);
+
+			} else if (_.isObject(cases)) {
+				// { 'propName:propValue': $method }
+				_.each(cases, function (method, condition) {
+
+					this.when(condition, method);
+
+				}, this);
+			}
 		},
+
+		/**
+		 * Cases on which methods should be invoked.
+		 * @type {Object}
+		 */
+		cases: {},
 
 		/**
 		 * Returns the object's current state.
@@ -154,6 +187,29 @@ define('stateful-view',['require','exports','module','lowercase-backbone','lodas
 		},
 
 
+
+
+		/**
+		 * [when description]
+		 * @param  {[type]} criteria [description]
+		 * @param  {[type]} method   [description]
+		 * @param  {[type]} context  [description]
+		 * @return {[type]}          [description]
+		 */
+		when: function statefulViewWhen(criteria, method, context) {
+
+			// get context (defaults to this)
+			context = context || this;
+
+			// get the method from the context object
+			method = _.isString(method) ? context[method] : method;
+
+			// set the condition
+			// onto the control model.
+			this.control.when(criteria, method, context);
+
+			return this;
+		},
 	});
 
 
